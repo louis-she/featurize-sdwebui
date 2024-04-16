@@ -1,0 +1,20 @@
+[project]
+name = "sdwebui"
+description = "在 Featurize 中使用 Stable Diffusion Web UI 做图"
+authors = [{name= "Chenglu", email = "chenglu.she@gmail.com"}]
+version = "1.0.0"
+readme = "README.md"
+
+[project.urls]
+Homepage = "https://github.com/louis-she/featurize-sdwebui"
+Documentation = "https://github.com/louis-she/featurize-sdwebui/blob/master/README.md"
+Repository = "https://github.com/louis-she/featurize-sdwebui"
+Changelog = "https://github.com/louis-she/featurize-sdwebui/blob/master/CHANGELOG.md"
+Issues = "https://github.com/louis-she/featurize-sdwebui/issues"
+
+[featurize]
+port = "20000"
+icon = "https://featurize-public.oss-cn-beijing.aliyuncs.com/apps/sd.png"
+author_github = "https://github.com/louis-she"
+name = "Stable Diffusion Web UI"
+newtab = false
