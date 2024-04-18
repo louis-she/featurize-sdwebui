@@ -114,6 +114,7 @@ class Sdwebui(App):
                 daemon=True,
                 cwd=self.source_location,
             )
+        wait_for_port(self.port)
         self.app_started()
 
 
