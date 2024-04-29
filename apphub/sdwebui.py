@@ -79,6 +79,10 @@ class Sdwebui(App):
             f"git clone --depth 1 --branch v{version} https://github.com/AUTOMATIC1111/stable-diffusion-webui.git",
             self.cfg.install_location,
         )
+        self.execute_command(
+            f"echo httpx[socks] >> ./stable-diffusion-webui/requirements.txt",
+            self.cfg.install_location,
+        )
         if not self.in_work:
             self.execute_command(
                 f"conda create -y -n {self.conda_env_name} python=3.10"
@@ -89,11 +93,14 @@ class Sdwebui(App):
             )
         with self.conda_activate(self.conda_env_name, self.conda_mode):
             self.execute_command(f"pip install 'httpx[socks]' xformers")
-            source = (Path(__file__).parent / "webui-user.sh.tpl").absolute().as_posix()
-            dest = os.path.join(
-                self.cfg.install_location, "stable-diffusion-webui", "webui-user.sh"
+            (
+                Path(self.cfg.install_location)
+                / "stable-diffusion-webui"
+                / "webui-user.sh"
+            ).write_text(
+                """export venv_dir="-"
+"""
             )
-            self.execute_command(f"cp {source} {dest}")
             # 启动一次
             self.execute_command(
                 f"bash webui.sh --listen --port {self.port}",
