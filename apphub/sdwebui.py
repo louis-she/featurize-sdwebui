@@ -182,7 +182,7 @@ class Sdwebui(App):
         if mount_models == "v1":
             Path("/home/featurize/.public/sdwebui").mkdir(parents=True, exist_ok=True)
             self.execute_command(
-                f"sudo mount -t nfs -o ro,acregmin=600,acregmax=3600,rsize=1048576,wsize=1048576,noatime,tcp 172.16.0.227:/featurize-public/sdwebui/assets_{mount_models} /home/featurize/.public/sdwebui"
+                f"sudo mount -t nfs -o ro,defaults,soft,nolock,vers=3 172.16.0.227:/featurize-public/sdwebui/assets_{mount_models} /home/featurize/.public/sdwebui"
             )
             self.link_model_file("BLIP/model_base_caption_capfilt_large.pth")
             self.link_model_file("Codeformer/codeformer-v0.1.0.pth")
