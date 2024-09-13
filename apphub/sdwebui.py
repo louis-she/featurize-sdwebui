@@ -83,7 +83,7 @@ class Sdwebui(App):
     def installation(self, install_location, version, launch_option, install_extension):
         super().installation(install_location, version, launch_option)
         self.execute_command(
-            f"git clone --depth 1 --branch v{version} https://github.com/AUTOMATIC1111/stable-diffusion-webui.git",
+            f"git clone --depth 1 --branch v{version} git://172.16.0.219/AUTOMATIC1111/stable-diffusion-webui",
             self.cfg.install_location,
         )
         self.execute_command(
@@ -100,26 +100,26 @@ class Sdwebui(App):
             )
 
         if install_extension:
-            self.execute_command("git clone --depth 1 https://github.com/OpenTalker/SadTalker.git", "stable-diffusion-webui/extensions")
-            self.execute_command("git clone --depth 1 https://github.com/ahgsql/StyleSelectorXL.git", "stable-diffusion-webui/extensions")
-            self.execute_command("git clone --depth 1 https://github.com/DominikDoom/a1111-sd-webui-tagcomplete.git", "stable-diffusion-webui/extensions")
-            self.execute_command("git clone --depth 1 https://github.com/Bing-su/adetailer.git", "stable-diffusion-webui/extensions")
-            self.execute_command("git clone --depth 1 https://github.com/deforum-art/deforum-for-automatic1111-webui.git", "stable-diffusion-webui/extensions")
-            self.execute_command("git clone --depth 1 https://github.com/s9roll7/ebsynth_utility.git", "stable-diffusion-webui/extensions")
-            self.execute_command("git clone --depth 1 https://github.com/pkuliyi2015/multidiffusion-upscaler-for-automatic1111.git", "stable-diffusion-webui/extensions")
-            self.execute_command("git clone --depth 1 https://github.com/fkunn1326/openpose-editor.git", "stable-diffusion-webui/extensions")
-            self.execute_command("git clone --depth 1 https://github.com/adieyal/sd-dynamic-prompts.git", "stable-diffusion-webui/extensions")
-            self.execute_command("git clone --depth 1 https://github.com/kohya-ss/sd-webui-additional-networks.git", "stable-diffusion-webui/extensions")
-            self.execute_command("git clone --depth 1 https://github.com/thomasasfk/sd-webui-aspect-ratio-helper.git", "stable-diffusion-webui/extensions")
-            self.execute_command("git clone --depth 1 https://github.com/Mikubill/sd-webui-controlnet.git", "stable-diffusion-webui/extensions")
-            self.execute_command("git clone --depth 1 https://github.com/zanllp/sd-webui-infinite-image-browsing.git", "stable-diffusion-webui/extensions")
-            self.execute_command("git clone --depth 1 https://github.com/Uminosachi/sd-webui-inpaint-anything.git", "stable-diffusion-webui/extensions")
-            self.execute_command("git clone --depth 1 https://github.com/huchenlei/sd-webui-openpose-editor.git", "stable-diffusion-webui/extensions")
-            self.execute_command("git clone --depth 1 https://github.com/Physton/sd-webui-prompt-all-in-one.git", "stable-diffusion-webui/extensions")
-            self.execute_command("git clone --depth 1 https://github.com/Gourieff/sd-webui-reactor.git", "stable-diffusion-webui/extensions")
-            self.execute_command("git clone --depth 1 https://github.com/hanamizuki-ai/stable-diffusion-webui-localization-zh_Hans", "stable-diffusion-webui/extensions")
-            self.execute_command("git clone --depth 1 https://github.com/AUTOMATIC1111/stable-diffusion-webui-rembg.git", "stable-diffusion-webui/extensions")
-            self.execute_command("git clone --depth 1 https://github.com/Coyote-A/ultimate-upscale-for-automatic1111.git", "stable-diffusion-webui/extensions")
+            self.execute_command("git clone --depth 1 git://172.16.0.219/OpenTalker/SadTalker", "stable-diffusion-webui/extensions")
+            self.execute_command("git clone --depth 1 git://172.16.0.219/ahgsql/StyleSelectorXL", "stable-diffusion-webui/extensions")
+            self.execute_command("git clone --depth 1 git://172.16.0.219/DominikDoom/a1111-sd-webui-tagcomplete", "stable-diffusion-webui/extensions")
+            self.execute_command("git clone --depth 1 git://172.16.0.219/Bing-su/adetailer", "stable-diffusion-webui/extensions")
+            self.execute_command("git clone --depth 1 git://172.16.0.219/deforum-art/deforum-for-automatic1111-webui", "stable-diffusion-webui/extensions")
+            self.execute_command("git clone --depth 1 git://172.16.0.219/s9roll7/ebsynth_utility", "stable-diffusion-webui/extensions")
+            self.execute_command("git clone --depth 1 git://172.16.0.219/pkuliyi2015/multidiffusion-upscaler-for-automatic1111", "stable-diffusion-webui/extensions")
+            self.execute_command("git clone --depth 1 git://172.16.0.219/fkunn1326/openpose-editor", "stable-diffusion-webui/extensions")
+            self.execute_command("git clone --depth 1 git://172.16.0.219/adieyal/sd-dynamic-prompts", "stable-diffusion-webui/extensions")
+            self.execute_command("git clone --depth 1 git://172.16.0.219/kohya-ss/sd-webui-additional-networks", "stable-diffusion-webui/extensions")
+            self.execute_command("git clone --depth 1 git://172.16.0.219/thomasasfk/sd-webui-aspect-ratio-helper", "stable-diffusion-webui/extensions")
+            self.execute_command("git clone --depth 1 git://172.16.0.219/Mikubill/sd-webui-controlnet", "stable-diffusion-webui/extensions")
+            self.execute_command("git clone --depth 1 git://172.16.0.219/zanllp/sd-webui-infinite-image-browsing", "stable-diffusion-webui/extensions")
+            self.execute_command("git clone --depth 1 git://172.16.0.219/Uminosachi/sd-webui-inpaint-anything", "stable-diffusion-webui/extensions")
+            self.execute_command("git clone --depth 1 git://172.16.0.219/huchenlei/sd-webui-openpose-editor", "stable-diffusion-webui/extensions")
+            self.execute_command("git clone --depth 1 git://172.16.0.219/Physton/sd-webui-prompt-all-in-one", "stable-diffusion-webui/extensions")
+            self.execute_command("git clone --depth 1 git://172.16.0.219/Gourieff/sd-webui-reactor", "stable-diffusion-webui/extensions")
+            self.execute_command("git clone --depth 1 git://172.16.0.219/hanamizuki-ai/stable-diffusion-webui-localization-zh_Hans", "stable-diffusion-webui/extensions")
+            self.execute_command("git clone --depth 1 git://172.16.0.219/AUTOMATIC1111/stable-diffusion-webui-rembg", "stable-diffusion-webui/extensions")
+            self.execute_command("git clone --depth 1 git://172.16.0.219/Coyote-A/ultimate-upscale-for-automatic1111", "stable-diffusion-webui/extensions")
 
         with self.conda_activate(self.conda_env_name, self.conda_mode):
             self.execute_command(f"pip install 'httpx[socks]' xformers")
