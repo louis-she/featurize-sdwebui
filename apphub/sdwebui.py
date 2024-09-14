@@ -45,7 +45,7 @@ class Sdwebui(App):
             install_location = self.render_install_location(allow_work=True, default="work")
             version = gr.Dropdown(choices=["1.10.1", "1.9.0"], label="安装的版本", value="1.10.1")
             launch_option = gr.Textbox(
-                label="默认启动项", info="在启动时还可以进一步调整"
+                label="默认启动项", info="在启动时还可以进一步调整，以空格分割", value="--enable-insecure-extension-access"
             )
             install_extension = gr.Dropdown(
                 label="安装常用插件", choices=["插件包（V1.0.0）", "不安装"], value="插件包（V1.0.0）", info="因为安装的插件数量比较多，安装过程会延长，请耐心等待"
@@ -99,7 +99,7 @@ class Sdwebui(App):
                 f"conda create -y --prefix {self.conda_env_name} python=3.10"
             )
 
-        if install_extension:
+        if install_extension == "插件包（V1.0.0）":
             self.execute_command("git clone --depth 1 git://172.16.0.219/OpenTalker/SadTalker", "stable-diffusion-webui/extensions")
             self.execute_command("git clone --depth 1 git://172.16.0.219/ahgsql/StyleSelectorXL", "stable-diffusion-webui/extensions")
             self.execute_command("git clone --depth 1 git://172.16.0.219/DominikDoom/a1111-sd-webui-tagcomplete", "stable-diffusion-webui/extensions")
@@ -164,7 +164,10 @@ class Sdwebui(App):
                     ("不挂载", "bare"),
                 ]
             )
-            button = self.render_start_button(inputs=[mount_models])
+            launch_option = gr.Textbox(
+                label="启动项", info="设置 sdwebui 的启动项", value=self.cfg.launch_option
+            )
+            button = self.render_start_button(inputs=[mount_models, launch_option])
             self.render_log()
         return demo
 
@@ -176,7 +179,7 @@ class Sdwebui(App):
             self.logger.info(f"link {s} to {t}")
             os.symlink(s, t)
 
-    def start(self, mount_models):
+    def start(self, mount_models, launch_option):
         """安装完成后，应用并不会立即开始运行，而是调用这个 start 函数。"""
 
         if mount_models == "v1":
@@ -334,7 +337,7 @@ class Sdwebui(App):
 
         with self.conda_activate(self.conda_env_name, self.conda_mode):
             self.execute_command(
-                f"bash webui.sh --listen --port {self.port} {self.cfg.launch_option}",
+                f"bash webui.sh --listen --port {self.port} {launch_option}",
                 daemon=True,
                 cwd=self.source_location,
             )
