@@ -131,6 +131,8 @@ class Sdwebui(App):
                 """export venv_dir="-"
 """
             )
+
+            self.execute_command(f"pip install -U librosa")
             # 启动一次
             self.execute_command(
                 f"bash webui.sh --listen --port {self.port}",
